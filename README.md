@@ -69,7 +69,7 @@
 документация за да бъдат интегрирани, а не на действия и формални
 решения от административни органи.
 
-1.  **Предложени решения**
+2.  **Предложени решения**
 
 Нормативните проблеми са вече адресирани със закона за изменение и
 допълнение на ЗЕУ. Елиминира се нуждата от централизиран подход чрез
@@ -104,7 +104,7 @@
 ще бъдат разработвани с отворен код, като по този начин преизползването
 на често срещани функционалности ще бъде улеснено.
 
-1.  **Интерфейси**
+3.  **Интерфейси**
 
 Следват конкретни интерфейси и структури, които първичните регистри и
 консуматорите (АИС-и) трябва да предоставят и извикват.
@@ -135,57 +135,34 @@ api.\<url\>/. Параметърът {version} показва версията, 
     регистърът. Съществуват предефинирани основни типове, като “имена”
     или “адрес”. Вж. т.4. Например:
 
+```
 {
-
-"data": [
-
-{
-
-"key": "names",
-
-"description": "Три имена",
-
-"version": 1,
-
-"type": "Names",
-
-"idTypes": [ "ЕГН", "ЛНЧ" ]
-
-},
-
-> {
-
-"key": "current\_address",
-
-"description": "Настоящ адрес",
-
-"version": 2,
-
-"type": "Address"
-
-"idTypes": [ "ЕГН", "ЛНЧ" ]
-
-},
-
-> {
-
-"key": "current\_address",
-
-"description": "Настоящ адрес",
-
-"version": 1,
-
-"type": "Address",
-
-"idTypes": [ "ЕГН", "ЛНЧ" ]
-
-"deprecated": true
-
+  "data": [
+    {
+		"key": "names",
+		"description": "Три имена",
+		"version": 1,
+		"type": "Names",
+		"idTypes": [ "ЕГН", "ЛНЧ" ]
+    },
+    {
+		"key": "current_address",
+		"description": "Настоящ адрес",
+		"version": 2,
+		"type": "Address",
+		"idTypes": [ "ЕГН", "ЛНЧ" ]
+	},
+	{
+		"key": "current\_address",
+		"description": "Настоящ адрес",
+		"version": 1,
+		"type": "Address",
+		"idTypes": [ "ЕГН", "ЛНЧ" ],
+		"deprecated": true
+	}
+  ]
 }
-
-]
-
-}
+```
 
 1.  GET /api/{version}/services - връща списък на уеб-услуги, които
     предоставя АИС-ът, с техните описания (XSD/json schema)
@@ -202,21 +179,16 @@ api.\<url\>/. Параметърът {version} показва версията, 
     идентификатор (на физически лица, юридически лица, автомобили и
     т.н.):
 
+```
 {
-
-"idTypes" : [
-
-{
-
-"idType": "ЕГН",
-
-"description": "Единен граждански номер на физически лица"
-
+  "idTypes" : [
+	{
+		"idType": "ЕГН",
+		"description": "Единен граждански номер на физически лица"
+	}
+  ]
 }
-
-]
-
-}
+```
 
 1.  POST /api/{version}/requestData/\<txId\> - заявка за данни.
 
@@ -225,47 +197,29 @@ api.\<url\>/. Параметърът {version} показва версията, 
 
     -   тялото на заявката следва да съдържа следното:
 
+```
 {
-
-"clientId" : "5c24acb8-e001-4d92-bb0c-5a02072ca1e9",
-
-"destinationId" : "b25b24c2-17f2-4ac3-885e-261506a8c693",
-
-"requestType" : "SYNCHRONOUS",
-
-"endpointType" : "DATA",
-
-"requestedDataFields" : [
-
-{
-
-> "key": "names",
->
-> "version": 1
->
-> },
-
-{
-
-> "key": "current\_address",
->
-> "version": 1
-
+	"clientId" : "5c24acb8-e001-4d92-bb0c-5a02072ca1e9",
+	"destinationId" : "b25b24c2-17f2-4ac3-885e-261506a8c693",
+	"requestType" : "SYNCHRONOUS",
+	"endpointType" : "DATA",
+	"requestedDataFields" : [
+		{
+			"key": "names",
+			"version": 1
+		},
+		{
+			"key": "current\_address",
+			"version": 1
+		}
+	],
+	"idType" : "ЕГН",
+	"id" : "8112120511",
+	"requestingPerson" : "Иван Иванов",
+	"requestingPersonAuthenticationToken" : "a43vsfda5342",
+	"serviceId": "123445"
 }
-
-],
-
-"idType" : "ЕГН",
-
-"id" : "8112120511",
-
-"requestingPerson" : "Иван Иванов",
-
-"requestingPersonAuthenticationToken" : "a43vsfda5342",
-
-"serviceId": "123445"
-
-}
+```
 
 -   Проверката на заявка в централния компонент се извършва, като се
     > изпрати заявка към него, съдържаща полученото тяло на заявката от
@@ -293,46 +247,33 @@ https://\<central-service-URL\>/api/{version}/transaction/verify?txId=\<txId\>
 -   Структурата на синхронния отговор, както и на асинхронните отговори,
     > изпратени към callbackUrl следва да бъде:
 
-> {
->
-> "txId": "5c24acb8-e001-4d92-bb0c-5a02072ca1e9",
->
-> "timestamp": "2016-01-01T17:43:19+02:00",
->
-> "success": true,
->
-> "data": [
->
-> {
->
-> "key": "names",
->
-> "value": {
->
-> "firstName": "Петър",
->
-> "lastName": "Петров"
->
-> }
->
-> }
->
-> ]
->
-> }
+```
+{
+	"txId": "5c24acb8-e001-4d92-bb0c-5a02072ca1e9",
+	"timestamp": "2016-01-01T17:43:19+02:00",
+	"success": true,
+	"data": [
+		{
+			"key": "names",
+			"value": {
+				"firstName": "Петър",
+				"lastName": "Петров"
+			}
+		}
+	]
+}
+```
 
 -   Известия за промяна при заявени данни с тип SUBSCRIBE следва да се
     > изпращат на callbackUrl със следния формат”
 
+```
 {
-
-"requestTxId": "5c24acb8-e001-4d92-bb0c-5a02072ca1e9",
-
-"timestamp": "2016-01-01T17:43:19+02:00",
-
-"dataChanged": "current\_address"
-
+	"requestTxId": "5c24acb8-e001-4d92-bb0c-5a02072ca1e9",
+	"timestamp": "2016-01-01T17:43:19+02:00",
+	"dataChanged": "current_address"
 }
+```
 
 Заявителят следва да разбере за кой идентификатор (напр. ЕГН) се отнася
 известието на база на requestTxId, което следва да пази в системата си
@@ -348,37 +289,27 @@ https://\<central-service-URL\>/api/{version}/transaction/verify?txId=\<txId\>
 2.  интерфейс за приемане на известия за промени на данни (в.ж. 4.1.6,
     > типове заявки)
 
-> Преди изпращане на заявка до първичен регистър, всеки консуматор
-> трябва да създаде транзакция, извиквайки
-> \<координатор\>/transaction/create Примерна заявка:
->
-> {
->
-> "clientId" : "5c24acb8-e001-4d92-bb0c-5a02072ca1e9",
->
-> "destinationId" : "b25b24c2-17f2-4ac3-885e-261506a8c693",
->
-> "destinationServiceId" : "b25b24c2-17f2-4ac3-885e-261506a8c693",
->
-> "requestType" : "SYNCHRONOUS",
->
-> "endpointType" : "DATA",
->
-> "requestedDataFields" : [ "names", "address" ],
->
-> "idType" : "ЕГН",
->
-> "id" : "8112120511",
->
-> "requestingPerson" : "Иван Иванов",
->
-> "requestingPersonAuthenticationToken" : "a43vsfda5342",
->
-> "serviceId": "123445"
->
-> }
->
-> Необходимо е и да бъдат предоставени два HTTP header-a:
+Преди изпращане на заявка до първичен регистър, всеки консуматор
+трябва да създаде транзакция, извиквайки
+\<координатор\>/transaction/create Примерна заявка:
+
+```
+{
+	"clientId" : "5c24acb8-e001-4d92-bb0c-5a02072ca1e9",
+	"destinationId" : "b25b24c2-17f2-4ac3-885e-261506a8c693",
+	"destinationServiceId" : "b25b24c2-17f2-4ac3-885e-261506a8c693",
+	"requestType" : "SYNCHRONOUS",
+	"endpointType" : "DATA",
+	"requestedDataFields" : [ "names", "address" ],
+	"idType" : "ЕГН",
+	"id" : "8112120511",
+	"requestingPerson" : "Иван Иванов",
+	"requestingPersonAuthenticationToken" : "a43vsfda5342",
+	"serviceId": "123445"
+}
+```
+
+Необходимо е и да бъдат предоставени два HTTP header-a:
 
 -   Signature - електронно подписаното тяло на заявката
 
