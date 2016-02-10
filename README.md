@@ -83,8 +83,7 @@
     технологични решения, елиминиращи човешкия фактор.
 
     Предложеното се базира на Архитектурата за електронно управление в
-    Приложение 1 -
-    [*https://docs.google.com/document/d/1WEbNObrBxu1SmpBcq27OzIiCuDM8vdn-xvlBk55SBJA/edit?usp=sharing*](https://docs.google.com/document/d/1WEbNObrBxu1SmpBcq27OzIiCuDM8vdn-xvlBk55SBJA/edit?usp=sharing)[](https://docs.google.com/document/d/1WEbNObrBxu1SmpBcq27OzIiCuDM8vdn-xvlBk55SBJA/edit?usp=sharing)
+    [Приложение 1](https://docs.google.com/document/d/1WEbNObrBxu1SmpBcq27OzIiCuDM8vdn-xvlBk55SBJA/edit?usp=sharing)[](https://docs.google.com/document/d/1WEbNObrBxu1SmpBcq27OzIiCuDM8vdn-xvlBk55SBJA/edit?usp=sharing)
 
     Изискванията ще се прилагат към всички проекти за изграждане и
     надграждане на първични регистри и административни информационни
@@ -801,7 +800,7 @@
     * * *
     - Защо се използва PKI за автентикация на системи?
     - Теоретично е възможно използването на HMAC за автентикация при
-    правене на заявка. Както е описано тук (*[**http://crypto.stackexchange.com/questions/5646/what-are-the-differences-between-a-digital-signature-a-mac-and-a-hash**](http://crypto.stackexchange.com/questions/5646/what-are-the-differences-between-a-digital-signature-a-mac-and-a-hash)*),
+    правене на заявка. Както е описано [тук](http://crypto.stackexchange.com/questions/5646/what-are-the-differences-between-a-digital-signature-a-mac-and-a-hash)),
     HMAC автентикацията не предоставя уверение за пред 3-ти лица, че
     заявката наистина е изпратена от този, който твърди, че я изпраща.
     Т.е. компрометиран централен компонент би могъл да инициира заявка от
