@@ -134,39 +134,39 @@
         регистърът. Съществуват предефинирани основни типове, като “имена”
         или “адрес”. Вж. т.4. Например:
 
-    ```
-    {
-      "data": [
+        ```
         {
-            "key": "names",
-            "description": "Три имена",
-            "version": 1,
-            "type": "Names",
-            "idTypes": [ "ЕГН", "ЛНЧ" ]
-        },
-        {
-            "key": "current_address",
-            "description": "Настоящ адрес",
-            "version": 2,
-            "type": "Address",
-            "idTypes": [ "ЕГН", "ЛНЧ" ]
-        },
-        {
-            "key": "current\_address",
-            "description": "Настоящ адрес",
-            "version": 1,
-            "type": "Address",
-            "idTypes": [ "ЕГН", "ЛНЧ" ],
-            "deprecated": true
+          "data": [
+            {
+                "key": "names",
+                "description": "Три имена",
+                "version": 1,
+                "type": "Names",
+                "idTypes": [ "ЕГН", "ЛНЧ" ]
+            },
+            {
+                "key": "current_address",
+                "description": "Настоящ адрес",
+                "version": 2,
+                "type": "Address",
+                "idTypes": [ "ЕГН", "ЛНЧ" ]
+            },
+            {
+                "key": "current\_address",
+                "description": "Настоящ адрес",
+                "version": 1,
+                "type": "Address",
+                "idTypes": [ "ЕГН", "ЛНЧ" ],
+                "deprecated": true
+            }
+          ]
         }
-      ]
-    }
-    ```
+        ```
 
-    1.  `GET /api/{version}/services` - връща списък на уеб-услуги, които
+    3.  `GET /api/{version}/services` - връща списък на уеб-услуги, които
         предоставя АИС-ът, с техните описания (XSD/json schema)
 
-    2.  `GET /api/{version}/dataType/{key}` - използвайки Json-schema
+    4.  `GET /api/{version}/dataType/{key}` - използвайки Json-schema
         ([*http://json-schema.org/examples.html*](http://json-schema.org/examples.html))
         или XSD, дефинира типовете структурите на данните, реферирани в
         полето type на горния списък. Параметърът “key” отговаря на
@@ -174,22 +174,22 @@
         регистър и стават де-факто “регистър на информационните обекти”
         според ЗЕУ.
 
-    3.  `GET /api/{version}/idTypes` - дава списък с поддържане типове
+    5.  `GET /api/{version}/idTypes` - дава списък с поддържане типове
         идентификатор (на физически лица, юридически лица, автомобили и
         т.н.):
 
-    ```
-    {
-      "idTypes" : [
+        ```
         {
-            "idType": "ЕГН",
-            "description": "Единен граждански номер на физически лица"
+          "idTypes" : [
+            {
+                "idType": "ЕГН",
+                "description": "Единен граждански номер на физически лица"
+            }
+          ]
         }
-      ]
-    }
-    ```
+        ```
 
-    1.  `POST /api/{version}/requestData/<txId>` - заявка за данни.
+    6.  `POST /api/{version}/requestData/<txId>` - заявка за данни.
 
         -   txId е идентификатор на транзакция, който следва да бъде 
             проверен в централния компонент
