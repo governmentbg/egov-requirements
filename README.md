@@ -83,7 +83,7 @@
     технологични решения, елиминиращи човешкия фактор.
 
     Предложеното се базира на Архитектурата за електронно управление в
-    [Приложение 1](https://docs.google.com/document/d/1WEbNObrBxu1SmpBcq27OzIiCuDM8vdn-xvlBk55SBJA/edit?usp=sharing)[](https://docs.google.com/document/d/1WEbNObrBxu1SmpBcq27OzIiCuDM8vdn-xvlBk55SBJA/edit?usp=sharing)
+    [Приложение 1](https://docs.google.com/document/d/1WEbNObrBxu1SmpBcq27OzIiCuDM8vdn-xvlBk55SBJA/edit?usp=sharing)[](https://docs.google.com/document/d/1WEbNObrBxu1SmpBcq27OzIiCuDM8vdn-xvlBk55SBJA/edit?usp=sharing).
 
     Изискванията ще се прилагат към всички проекти за изграждане и
     надграждане на първични регистри и административни информационни
@@ -151,7 +151,7 @@
                 "idTypes": [ "ЕГН", "ЛНЧ" ]
             },
             {
-                "key": "current\_address",
+                "key": "current_address",
                 "description": "Настоящ адрес",
                 "version": 1,
                 "type": "Address",
@@ -224,7 +224,7 @@
         заявителя към
 
     `POST
-    https://\<central-service-URL\>/api/{version}/transaction/verify?txId=<txId>`
+    https://<central-service-URL>/api/{version}/transaction/verify?txId=<txId>`
 
     -   При успешна верификация, централният компонент отговаря с true и
         първичният администратор на данни следва да предостави отговор на
