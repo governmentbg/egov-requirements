@@ -8,3 +8,12 @@
 бъдат намерени и на адрес <http://dev.egov.bg> (все още не
 функционира). Коментари и заявки за промени на документа могат да бъдат
 изпращани на <https://github.com/governmentbg/egov-requrements/issues>.
+
+# Генериране на файл във формат docx
+
+От изходния формат на документа може да бъде генериран файл в docx формат. За
+това е нужно да инсталирате
+[pandoc](https://github.com/jgm/pandoc/releases/latest) и да изпълните следната
+команда:
+
+    pandoc -s -i EgovRequirements-Draft.md -f markdown+compact_definition_lists -o EgovRequirements-Draft.docx
