@@ -20,7 +20,7 @@
 Документът, техническите детайли към него и историята на редакциите му
 могат да бъдат намерени и на адрес <http://dev.egov.bg> (все още не
 функционира). Коментари и заявки за промени на документа могат да бъдат
-изпращани на <https://github.com/governmentbg/egov-requrements/issues>.
+изпращани на <https://github.com/governmentbg/egov-requirements/issues>.
 
 ### 2. **Текущо състояние**
 
